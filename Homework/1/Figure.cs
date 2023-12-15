@@ -30,4 +30,14 @@ class Figure
         get { return perimetr;}
         set { perimetr = value;}
     }
+
+    public double CalculateArea()
+    {
+        return area;
+    }
+
+    public double CalculatePerimeter()
+    {
+        return perimetr;
+    }
 }

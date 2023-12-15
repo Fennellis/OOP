@@ -10,7 +10,7 @@ System.Console.WriteLine(circle);
 circle.Area = 30;
 System.Console.WriteLine(circle);
 
-
+System.Console.WriteLine(circle.calculateArea());
 
 // Rectangle rect = new Rectangle(2, 5);
 // System.Console.WriteLine(rect);

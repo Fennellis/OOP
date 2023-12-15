@@ -6,8 +6,8 @@ class Circle : Figure
     public Circle(double radius)
     {
         this.radius = radius;
-        base.area = PI * Math.Pow(radius, 2);
-        base.perimetr = 2 * PI * radius;
+        area = PI * Math.Pow(radius, 2);
+        perimetr = 2 * PI * radius;
     }
     public Circle()
     {
