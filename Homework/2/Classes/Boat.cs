@@ -7,7 +7,6 @@ namespace _2.Classes
     {
         readonly int maxSpeed = 0;
         bool isSailing = false;
-        // private int currentSpeed = 0;
 
         static private int count = 0;
 
