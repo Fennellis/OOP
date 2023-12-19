@@ -6,9 +6,12 @@ namespace _2.Classes
     {
         readonly int maxAltitude;
         readonly int maxSpeed;
+        int maxLandSpeed = 120;
+        readonly int minLandHeight = 400;
         readonly int minTakeOffSpeed;
         int currentHeight;
         bool isFlying = false;
+        bool isLandPossible;
         static private int count = 0;
 
         public Aircraft(String brand, String model, int year, int minTakeOffSpeed, int maxSpeed, int maxAltitude) : base(brand, model, year)
@@ -21,13 +24,22 @@ namespace _2.Classes
 
         public Aircraft() : this("N/A", "N/A", 0, 0, 0, 0)
         {}
+        protected int MaxLandSpeed
+        {
+            get {return maxLandSpeed;}
+            set {maxLandSpeed = value;}
+        }
         public void Land()
         {
-            if (currentSpeed > 80)
+            if (isFlying == false)
             {
-                System.Console.WriteLine("Too fast for landing");
+                System.Console.WriteLine("The plane has already landed");
                 return;
             }
+
+            System.Console.WriteLine("Preparations for landing the plane begin");
+            ChangeHeight(minLandHeight);
+            Accelerate(MaxLandSpeed);
 
             isFlying = false;
             System.Console.WriteLine("The plane landed successfully");
@@ -36,12 +48,19 @@ namespace _2.Classes
 
         public void TakeOff()
         {
+            if (isFlying == true)
+            {
+                System.Console.WriteLine("The plane has already taken off");
+                return;
+            }
+                
             if (currentSpeed >= minTakeOffSpeed)
             {
                 isFlying = true;
                 System.Console.WriteLine("The plane took off successfully");
                 ChangeHeight(1000);
             }
+            isLandPossible = true;
         }
 
         public void ChangeHeight(int height)
@@ -67,9 +86,9 @@ namespace _2.Classes
             if (isFlying)
                 status = "Flying";
             else status = "Landed";
-            System.Console.WriteLine($"Aircraft {id}: (brand: {brand} | model: {model} | "
-                                    +$"year: {year} | minTakeOffSpeed: {minTakeOffSpeed} | "
-                                    +$"maxSpeed: {maxSpeed} | maxAltitude: {maxAltitude} Status: {status})");
+            System.Console.WriteLine($"Aircraft {id}: (brand: {brand} | model: {model} | year: {year} | "
+                                    +$"currentSpeed: {currentSpeed} | minTakeOffSpeed: {minTakeOffSpeed} | "
+                                    +$"maxSpeed: {maxSpeed} | currentHeight: {currentHeight} | maxAltitude: {maxAltitude} Status: {status})");
         }
 
         public void StartEngine()
@@ -84,9 +103,7 @@ namespace _2.Classes
 
         public void Accelerate(int speed)
         {
-            if (currentSpeed + speed > maxSpeed)
-                speed = maxSpeed;
-            currentSpeed = Accelerate("Aircraft", speed, isStarted, currentSpeed);
+            Accelerate("Car", speed, isStarted);
         }
 
         public override void Brake()
@@ -97,7 +114,7 @@ namespace _2.Classes
                 return;
             }
 
-            currentSpeed = Accelerate("Aircraft",-currentSpeed, isStarted, currentSpeed);
+            Accelerate("Aircraft",0, isStarted);
         }
     }
 }

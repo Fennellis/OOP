@@ -33,11 +33,11 @@ namespace _2.Classes
         }
         public void Accelerate(int speed)
         {
-            currentSpeed = Accelerate("Car", speed, isStarted, currentSpeed);
+            Accelerate("Car", speed, isStarted);
         }
         public override void Brake()
         {
-            currentSpeed = Accelerate("Car",-currentSpeed, isStarted, currentSpeed);
+            Accelerate("Car",0, isStarted);
         }
         public void Refuel(int liters)
         {

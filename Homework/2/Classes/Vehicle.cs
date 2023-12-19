@@ -33,23 +33,20 @@ namespace _2.Classes
             }
             else System.Console.WriteLine($"{className} {id} engine already stopped");
         }
-        protected int Accelerate(String className, int speed, bool isStarted, int currentSpeed)
+        protected void Accelerate(String className, int speed, bool isStarted)
         {
-            if (speed == 0)
-                return currentSpeed;
             if (isStarted == false)
                 StartEngine(className);
             
             String str;
-            if (speed > 0)
+            if (speed > currentSpeed)
                 str = "up";
             else str = "down";
 
-            currentSpeed += speed;
-            System.Console.WriteLine($"{className} {id} speed {str} to {currentSpeed} km/h");
+            System.Console.WriteLine($"{className} {id} speed {str} to {speed} km/h");
+            currentSpeed = speed;
             if (currentSpeed == 0)
                 System.Console.WriteLine($"{className} {id} has stopped");
-            return currentSpeed;
         }
         public abstract void Brake();
 

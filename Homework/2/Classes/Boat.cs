@@ -65,11 +65,11 @@ namespace _2.Classes
         {
             if (currentSpeed + speed > maxSpeed)
                 speed = maxSpeed;
-            currentSpeed = Accelerate("Boat", speed, isStarted, currentSpeed);
+            Accelerate("Boat", speed, isStarted);
         }
         public override void Brake()
         {
-            currentSpeed = Accelerate("Boat",-currentSpeed, isStarted, currentSpeed);
+            Accelerate("Boat",0, isStarted);
         }
     }
 }
