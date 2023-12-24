@@ -47,7 +47,7 @@ class Student : IComparable<Student>
             return student.Name == this.name &&
                     student.Surname == this.surname &&
                     student.Birthday == this.birthday;
-        else throw new Exception("Ошибка типов");
+        else return false;
     }
 
     public override string ToString()
