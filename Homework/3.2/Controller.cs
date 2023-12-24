@@ -16,9 +16,10 @@ class Controller
         LearningGroupService service = new();
         group = service.SortByFullName(group);
     }
-    public static void SortStreams(ref List<Stream> streams)
+    public static List<Stream> SortStreams(List<Stream> streams)
     {
         StreamService service = new();
-        service.Sort(ref streams);
+        service.Sort(streams);
+        return streams;
     }
 }

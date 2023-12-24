@@ -1,6 +1,6 @@
 class StreamService
 {
-    public void Sort(ref List<Stream> stream)
+    public void Sort(List<Stream> stream)
     {
         stream.Sort(new StreamComparator());
     }

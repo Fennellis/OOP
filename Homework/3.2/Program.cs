@@ -93,6 +93,6 @@ PrintListStreams(lst);
 System.Console.WriteLine("----------------------------------\n");
 System.Console.WriteLine("Сортировка списка потоков:");
 
-Controller.SortStreams(ref lst);
+Controller.SortStreams(lst);
 
 PrintListStreams(lst);
