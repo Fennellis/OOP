@@ -15,7 +15,7 @@ abstract class Group<T> : IEnumerable, IComparable where T: User
         {
             group.Add(user);
         }
-            
+           
     }
     public void Remove(T user)
     {
